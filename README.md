@@ -77,6 +77,24 @@ claude mcp add trello \
 }
 ```
 
+### Option B: hosted (no install) — Claude custom connector
+
+The server also runs as a stateless HTTP endpoint (`src/http.ts`), packaged as a Supabase Edge Function:
+
+```bash
+npm run build:edge                                    # writes supabase/functions/trello-mcp
+supabase functions deploy trello-mcp --no-verify-jwt  # or deploy via the Supabase MCP / dashboard
+```
+
+Then in Claude: **Settings → Connectors → Add custom connector**, URL:
+
+```
+https://<project-ref>.supabase.co/functions/v1/trello-mcp?key=YOUR_API_KEY&token=YOUR_TOKEN
+```
+
+Add `&readonly=1` for read-only tools. Credentials live only in your connector URL; nothing is stored
+server-side. Treat that URL like a password.
+
 ### Environment variables
 
 | Variable | Required | Description |

@@ -8,7 +8,8 @@
     "start": "node dist/index.js",
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
-    "inspect": "npx @modelcontextprotocol/inspector node dist/index.js"
+    "inspect": "npx @modelcontextprotocol/inspector node dist/index.js",
+    "build:edge": "node scripts/build-edge.mjs"
   },
   "license": "MIT",
   "dependencies": {
